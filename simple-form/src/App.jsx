@@ -12,6 +12,7 @@ function Form() {
   const [gender, setGender] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [classesEnrolled, setClassesEnrolled] = useState([]);
+  const [profileImage, setProfileImage] = useState("");
 
    const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,6 +25,7 @@ function Form() {
     console.log(gender);
     console.log(classesEnrolled);
     console.log(aboutMe);
+    console.log(profileImage);
   }
 
   const handleClassLevel = (event) => {
@@ -162,14 +164,14 @@ function Form() {
             </label>
           </div>
 
-          {/* <div className="section-wrapper">
+          <div className="section-wrapper">
             <label>
-              Upload Filename:
+              Upload Profile Picture:
               <div style={{border: "1px solid  #777", width: "100%"}}>
-                <input type="file"/>
+                <input type="file" onChange={(e) => setProfileImage(e.target.files[0])}/>
               </div>
             </label>
-          </div> */}
+          </div>
           <div className="section-wrapper">
             <label>
               Enter URL*:
@@ -181,7 +183,7 @@ function Form() {
             <label>
               Select your class level:
               <br></br>
-              <select value={classLevel} onChange={handleClassLevel}>
+              <select value={classLevel} onChange={handleClassLevel} required>
                 <option value="" disabled>Select Class Level</option>
                 <option value="freshman">Freshman</option>
                 <option value="sophmore">Sophomore</option>
