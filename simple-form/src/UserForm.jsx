@@ -1,8 +1,8 @@
 import { useState } from "react";
+import  validator from "validator";
 import "./App.css";
 
 function UserForm() {
-
   const [firstName, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,8 +13,10 @@ function UserForm() {
   const [aboutMe, setAboutMe] = useState("");
   const [classesEnrolled, setClassesEnrolled] = useState([]);
   const [profileImage, setProfileImage] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-   const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log(firstName);
     console.log(lastname);
@@ -26,7 +28,9 @@ function UserForm() {
     console.log(classesEnrolled);
     console.log(aboutMe);
     console.log(profileImage);
-  }
+    console.log(username);
+    console.log(password);
+  };
 
   const handleClassLevel = (event) => {
     setClassLevel(event.target.value);
@@ -34,16 +38,15 @@ function UserForm() {
 
   const handleRadioGenderChange = (value) => {
     setGender(value);
-  }
+  };
 
   const handleCheckClasses = (newClass) => {
-
-    setClassesEnrolled(prevClasses => [...prevClasses, newClass]);
-  }
+    setClassesEnrolled((prevClasses) => [...prevClasses, newClass]);
+  };
 
   return (
     <>
-      <h2 style={{color: "#32CD32"}}>User Form</h2>
+      <h2 style={{ color: "#32CD32" }}>User Form</h2>
 
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>
@@ -105,6 +108,24 @@ function UserForm() {
 
           <div className="section-wrapper">
             <label>
+              Username*:
+              <input type="text" className="text-box" placeholder="Enter Username:" required onChange={(e) => setUsername(e.target.value)}/>
+            </label>
+          </div>
+
+          <div className="section-wrapper">
+            <label>
+              Password*:
+              <p style={{color: validator.isStrongPassword(password) ? "green" : "red" }}>
+                {password && (validator.isStrongPassword(password) ? "Strong password" : "Weak password")}
+              </p>
+              <input type="text" className="text-box" placeholder="Enter Password:" required 
+              onChange={(e) => setPassword(e.target.value)}/>
+            </label>
+          </div>
+
+          <div className="section-wrapper">
+            <label>
               Gender*:
               <div className="option-group">
                 <label>
@@ -114,7 +135,9 @@ function UserForm() {
                     id="maleRadio"
                     value="Male"
                     name="gender"
-                    onChange={() => {handleRadioGenderChange("Male")}}
+                    onChange={() => {
+                      handleRadioGenderChange("Male");
+                    }}
                     required
                   />
                 </label>
@@ -125,7 +148,9 @@ function UserForm() {
                     id="femaleRadio"
                     value="Female"
                     name="gender"
-                    onChange={() => {handleRadioGenderChange("Female")}}
+                    onChange={() => {
+                      handleRadioGenderChange("Female");
+                    }}
                     required
                   />
                 </label>
@@ -136,7 +161,9 @@ function UserForm() {
                     id="otherRadio"
                     value="Other"
                     name="gender"
-                    onChange={() => {handleRadioGenderChange("Other")}}
+                    onChange={() => {
+                      handleRadioGenderChange("Other");
+                    }}
                     required
                   />
                 </label>
@@ -147,18 +174,39 @@ function UserForm() {
           <div className="section-wrapper">
             <label>
               Your Best Subject*:
-              <div className="option-group" style={{paddingTop: "8px"}}>
+              <div className="option-group" style={{ paddingTop: "8px" }}>
                 <label>
                   English:
-                  <input type="checkbox" id="englishCheck" value="English" onChange={() => {handleCheckClasses("English")}}/>
+                  <input
+                    type="checkbox"
+                    id="englishCheck"
+                    value="English"
+                    onChange={() => {
+                      handleCheckClasses("English");
+                    }}
+                  />
                 </label>
                 <label style={{ padding: "30px" }}>
                   Math:
-                  <input type="checkbox" id="mathCheck" value="Math"  onChange={() => {handleCheckClasses("Math")}}/>
+                  <input
+                    type="checkbox"
+                    id="mathCheck"
+                    value="Math"
+                    onChange={() => {
+                      handleCheckClasses("Math");
+                    }}
+                  />
                 </label>
                 <label>
                   Physics:
-                  <input type="checkbox" id="physicsCheck" value="Physics"  onChange={() => {handleCheckClasses("Physics")}} />
+                  <input
+                    type="checkbox"
+                    id="physicsCheck"
+                    value="Physics"
+                    onChange={() => {
+                      handleCheckClasses("Physics");
+                    }}
+                  />
                 </label>
               </div>
             </label>
@@ -167,8 +215,11 @@ function UserForm() {
           <div className="section-wrapper">
             <label>
               Upload Profile Picture:
-              <div style={{border: "1px solid  #777", width: "100%"}}>
-                <input type="file" onChange={(e) => setProfileImage(e.target.files[0])}/>
+              <div style={{ border: "1px solid  #777", width: "100%" }}>
+                <input
+                  type="file"
+                  onChange={(e) => setProfileImage(e.target.files[0])}
+                />
               </div>
             </label>
           </div>
@@ -176,7 +227,12 @@ function UserForm() {
             <label>
               Enter URL*:
               <br></br>
-              <input type="text" placeholder="Enter URL" className="text-box" onChange={(e) => setURL(e.target.value)}/>
+              <input
+                type="text"
+                placeholder="Enter URL"
+                className="text-box"
+                onChange={(e) => setURL(e.target.value)}
+              />
             </label>
           </div>
           <div className="section-wrapper">
@@ -184,7 +240,9 @@ function UserForm() {
               Select your class level:
               <br></br>
               <select value={classLevel} onChange={handleClassLevel} required>
-                <option value="" disabled>Select Class Level</option>
+                <option value="" disabled>
+                  Select Class Level
+                </option>
                 <option value="freshman">Freshman</option>
                 <option value="sophmore">Sophomore</option>
                 <option value="junior">Junior</option>
@@ -210,7 +268,7 @@ function UserForm() {
             <br />
             <div className="option-group">
               <button type="reset">Reset</button>
-              <button type="submit" >Submit</button>
+              <button type="submit">Submit</button>
             </div>
           </div>
         </form>
