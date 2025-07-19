@@ -10,7 +10,7 @@ function UserForm() {
           <button onClick={() => navigate("user-form") }  >
           Register
           </button>
-          <button>Log In</button>
+          <button onClick={() => navigate("login")}>Log In</button>
     </div>
     </>
   );

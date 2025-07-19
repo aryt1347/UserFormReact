@@ -1,5 +1,6 @@
 import { useState } from "react";
 import  validator from "validator";
+import { useNavigate } from 'react-router-dom';
 import "./App.css";
 
 function UserForm() {
@@ -15,6 +16,8 @@ function UserForm() {
   const [profileImage, setProfileImage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -119,7 +122,7 @@ function UserForm() {
               <p style={{color: validator.isStrongPassword(password) ? "green" : "red" }}>
                 {password && (validator.isStrongPassword(password) ? "Strong password" : "Weak password")}
               </p>
-              <input type="text" className="text-box" placeholder="Enter Password:" required 
+              <input type="password" className="text-box" placeholder="Enter Password:" required 
               onChange={(e) => setPassword(e.target.value)}/>
             </label>
           </div>
@@ -268,7 +271,7 @@ function UserForm() {
             <br />
             <div className="option-group">
               <button type="reset">Reset</button>
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={() => navigate('login')}>Submit</button>
             </div>
           </div>
         </form>
