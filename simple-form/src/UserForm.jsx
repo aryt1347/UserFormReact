@@ -1,11 +1,7 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import  UserForm  from './UserForm.jsx'
-import  HomePage  from './HomePage.jsx'
 import "./App.css";
 
-
-function Form() {
+function UserForm() {
 
   const [firstName, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -223,20 +219,4 @@ function Form() {
   );
 }
 
-
-function App() {
-
-  return (
-    <>
-      {/* <Form /> */}
-      <Router>
-        <Routes>
-          <Route path="" element={<HomePage />} />
-          <Route path="/user-form" element={<UserForm />} />
-        </Routes>
-      </Router>
-    </>
-  );
-}
-
-export default App;
+export default UserForm;
