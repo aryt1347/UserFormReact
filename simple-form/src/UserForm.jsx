@@ -8,7 +8,6 @@ function UserForm() {
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [url, setURL] = useState("");
   const [classLevel, setClassLevel] = useState("");
   const [gender, setGender] = useState("");
   const [aboutMe, setAboutMe] = useState("");
@@ -25,7 +24,6 @@ function UserForm() {
     console.log(lastname);
     console.log(email);
     console.log(contactNumber);
-    console.log(url);
     console.log(classLevel);
     console.log(gender);
     console.log(classesEnrolled);
@@ -226,18 +224,6 @@ function UserForm() {
                   onChange={(e) => setProfileImage(e.target.files[0])}
                 />
               </div>
-            </label>
-          </div>
-          <div className="section-wrapper">
-            <label>
-              Enter URL*:
-              <br></br>
-              <input
-                type="text"
-                placeholder="Enter URL"
-                className="text-box"
-                onChange={(e) => setURL(e.target.value)}
-              />
             </label>
           </div>
           <div className="section-wrapper">
