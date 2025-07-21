@@ -33,6 +33,8 @@ function UserForm() {
     console.log(profileImage);
     console.log(username);
     console.log(password);
+    // All feilds filled out, go to login
+    navigate("/login");
   };
 
   const handleClassLevel = (event) => {
@@ -271,7 +273,7 @@ function UserForm() {
             <br />
             <div className="option-group">
               <button type="reset">Reset</button>
-              <button type="submit" onClick={() => navigate('login')}>Submit</button>
+              <button type="submit">Submit</button>
             </div>
           </div>
         </form>

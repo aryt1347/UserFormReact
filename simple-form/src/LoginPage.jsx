@@ -24,6 +24,7 @@ function Login() {
               <input type="password" placeholder="Enter Password" className="text-box"/>
             </label>
           </div>
+          {/* On submit direct to the profile page */}
           <button type="submit">Submit</button>
         </form>
       </div>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import  UserForm  from './UserForm.jsx'
 import  HomePage  from './HomePage.jsx'
 import Login from './LoginPage.jsx'
+import ProfilePage from "./ProfilePage.jsx";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="" element={<HomePage />} />
           <Route path="/user-form" element={<UserForm />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </>
